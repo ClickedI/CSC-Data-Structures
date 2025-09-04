@@ -1,7 +1,10 @@
-#include "is-has.h"
+#include "computer.h"
+#include "lap_top.h"
 #include <sstream>
+#include <iostream>
 
 using std::ostringstream;
+using std::ostream;
 using std::string;  
 
 string Computer::get_string () const {

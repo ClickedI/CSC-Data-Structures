@@ -1,5 +1,5 @@
-#ifndef IN_CLASS_H
-#define IN_CLASS_H
+#ifndef COMPUTER_H
+#define COMPUTER_H
 #include <string>
 
 
@@ -23,4 +23,4 @@ class Computer {
         std::string get_string () const;
 };
 
-#endif // IN_CLASS_H
+#endif // COMPUTER_H
