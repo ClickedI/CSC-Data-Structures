@@ -1,5 +1,5 @@
 #include "computer.h"
-#include "lap_top.h"
+#include "Lap_Top.h"
 #include <sstream>
 #include <iostream>
 
@@ -15,3 +15,4 @@ string Computer::get_string () const {
        << "Disk Size (GB): " << disk_size << "\n";
     return sb.str();
 }
+

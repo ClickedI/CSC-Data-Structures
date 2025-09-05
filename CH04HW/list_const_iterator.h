@@ -8,9 +8,9 @@ class const_iterator {
   // Data fields
  private:
   /** A pointer to the parent list */
-  const list<Item_Type>* parent;
+  const list<Item_Type>* parent{};
   /** A pointer to the current node */
-  typename list<Item_Type>::DNode* current;
+  typename list<Item_Type>::DNode* current{};
   
   // Methods
   /** Construct a const_iterator that references a specific node
@@ -34,7 +34,13 @@ class const_iterator {
     @throws std::invalid_argument If this const_iterator
                                   is at end
 */
-const Item_Type& operator*() const;
+    const Item_Type& operator*() const {
+      if (current == NULL)
+          throw std::invalid_argument
+            ("Attempt to dereference end()");
+      return current->data;
+  }
+
 
 /** Return a pointer to the currently referenced item.
     Item_Type must be a class or struct. This restriction
@@ -43,34 +49,71 @@ const Item_Type& operator*() const;
     @throws std::invalid_argument If this const_iterator
                                   is at end
 */
-const Item_Type* operator->() const;
+    const Item_Type* operator->() const {
+      if (current == NULL)
+          throw std::invalid_argument
+            ("Attempt to dereference end()");
+      return &(current->data);
+  }
+
   
   /** Advance the const_iterator forward
       @return a modified version of this const_iterator that now 
       references the next forward position
       @throws std::invalid_argument If this const_iterator is at end
   */
-  const_iterator& operator++();
+    const_iterator& operator++(){
+      if (current == NULL)
+          throw std::invalid_argument("Attempt to advance past end()");
+      current = current->next;
+      return *this;
+  }
   
   /** Move the const_iterator backward
       @return a modified version of this const_iterator that
       now references the previous position
       @throws std::invalid_argument If this const_iterator is at begin
   */
-  const_iterator& operator--();
-  
+    const_iterator& operator--(){
+      if (current == parent->head)
+          throw std::invalid_argument("Attempt to move before begin()");
+      if (current == NULL) // Past last element.
+          current = parent->tail;
+      else
+          current = current->prev;
+      return *this;
+  }
   /** Postfix increment operator
       @return A copy of this const_iterator before being advanced.
   */
-  const_iterator operator++(int);
+    const_iterator operator++(int){
+      // Make a copy of the current value.
+      iterator return_value = *this;
+      // Advance self forward.
+      ++(*this);
+      // Return old value.
+      return return_value; /* Return the value prior to increment */
+  }
   /** Postfix decrement operator
       @return A copy of this const_iterator before being retarded
   */
-  const_iterator operator--(int);
+    const_iterator operator--(int){
+      // Make a copy of the current value.
+      iterator return_value = *this;
+      // Move self backward.
+      --(*this);
+      // Return old value.
+      return return_value; /* Return the value prior to decrement */
+  }
   // Compare for equality
-  bool operator==(const const_iterator& other);
+    bool operator==(const const_iterator& other){
+      return current == other.current && parent == other.parent;
+  }
+
   // Not equal
-  bool operator!=(const const_iterator& other);
+    bool operator!=(const const_iterator& other){
+      return !(*this == other);
+  }
 }; // End const_iterator
 
 #endif

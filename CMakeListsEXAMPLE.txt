@@ -39,6 +39,8 @@ add_executable(CSC109PROJECT
     runner.cpp
     ${ALL_CPP_FILES}
     ${ALL_HEADER_FILES}
+        "In-Class CH04/main.cpp"
+        "In-Class CH04/main.cpp"
 )
 # do not sumbit runner.cpp and main.cpp to Web-CAT.
 

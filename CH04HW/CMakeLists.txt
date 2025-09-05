@@ -7,6 +7,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable
 add_executable(program
-    main.cpp
-    computer.cpp
+        list_demo.cpp
 )
