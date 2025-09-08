@@ -1,3 +1,5 @@
+//copyright 2025
+
 #ifndef DNODE_H_
 #define DNODE_H_
 

@@ -1,15 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   newCxxTest.h
- * Author: hloi
- *
- * Created on January 26, 2018, 3:52 PM
- */
+//copyright 2025
 
 #ifndef NEWCXXTEST_H
 #define NEWCXXTEST_H
@@ -126,7 +115,7 @@ public:
         KW::list<int> newList{};
         TS_ASSERT_EQUALS(newList.empty(), true);
         newList.push_back(1);
-        newList.pop_front()    ;
+        newList.pop_front();
         TS_ASSERT_EQUALS(newList.size(), 0);
     }
 
@@ -135,7 +124,7 @@ public:
         KW::list<int> newList{};
         newList.push_front(1);
         newList.push_front(2);
-        newList.pop_front()    ;
+        newList.pop_front();
         TS_ASSERT_EQUALS(newList.size(), 1);
     }
 
@@ -144,7 +133,7 @@ public:
         KW::list<int> newList{};
         newList.push_back(1);
         newList.push_back(2);
-        newList.pop_back()    ;
+        newList.pop_back();
         TS_ASSERT_EQUALS(newList.size(), 1);
     }
 
@@ -160,9 +149,9 @@ public:
         TS_ASSERT_EQUALS(newList.size(), 0);
     }
 
-    void testRemove(int index)
+    void testRemoveIndex()
     {
-        index = 1;
+        int index = 1;
         KW::list<int> newList{};
         TS_ASSERT_THROWS(newList.remove(index), std::invalid_argument);
         newList.push_back(1);

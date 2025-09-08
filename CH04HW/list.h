@@ -1,9 +1,11 @@
+//copyright 2025
+
 #ifndef LIST_H_
 #define LIST_H_
 
 #include <stdexcept>
 #include <cstddef>
-#include <__utility/swap.h>
+#include <utility>
 
 /** Class list implements a subset of the standard
     list class using a double-linked list.
@@ -79,7 +81,7 @@ namespace KW {
             //function that checks if head is null. If it isn't it sets a pointer to the current head, assigns the head to the next node, then deletes the original
             while (head != nullptr)
             {
-                const DNode* temp = head;
+                DNode* temp = head;
                 head = head->next;
                 delete temp;
             }
@@ -160,7 +162,7 @@ namespace KW {
                 push_front(item);
                 return begin();
             }
-            if (pos.current == nullptr){
+            if (pos.current == nullptr) {
                 push_back(item);
                 return iterator(this, tail);
             }
@@ -318,8 +320,8 @@ namespace KW {
                 return return_value;
             }
             DNode* removed_node = pos.current;
-            removed_node->prev->next = pos.current->next;
-            removed_node->next->prev = pos.current->prev;
+            removed_node->prev->next = removed_node->next;
+            removed_node->next->prev = removed_node->prev;
             delete pos.current;
             return return_value;
         }
@@ -340,7 +342,7 @@ namespace KW {
             {
                 if (*iter == item)
                 {
-                    remove(iter);
+                    iter = remove(iter);
                 }
                 else
                 {

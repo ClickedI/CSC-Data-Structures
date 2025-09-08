@@ -1,5 +1,3 @@
-
-
 cmake_minimum_required(VERSION 3.10)
 
 # Set the project name
@@ -10,10 +8,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 # Include the CxxTest framework (update path as needed)
 # if your cxxtest is not located in c:/cxxtest-4.4, change the path to match your cxxtest location.
-include_directories(/opt/homebrew/opt/cxxtest/include)
-
+include_directories(C:/cxxtest-4.4)
 # if your cxxtest is not located in c:/cxxtest-4.4, change the path to match your cxxtest location.
-set(CXXTESTGEN /opt/homebrew/opt/cxxtestgen)
+set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE c:/cxxtest-4.4/bin/cxxtestgen)
 
 # Find CxxTest (ensure it's installed and path is correct)
 find_package(CxxTest REQUIRED)
@@ -40,8 +37,7 @@ CXXTEST_ADD_TEST(unittest
 # Add executable using the auto-collected files
 add_executable(CSC109PROJECT
         runner.cpp
+        ${ALL_CPP_FILES}
         ${ALL_HEADER_FILES}
 )
 # do not sumbit runner.cpp and main.cpp to Web-CAT.
-
-

@@ -1,3 +1,5 @@
+//copyright 2025
+
 #ifndef LIST_CONST_ITERATOR_H_
 #define LIST_CONST_ITERATOR_H_
 
@@ -62,7 +64,7 @@ class const_iterator {
       references the next forward position
       @throws std::invalid_argument If this const_iterator is at end
   */
-    const_iterator& operator++(){
+    const_iterator& operator++() {
       if (current == NULL)
           throw std::invalid_argument("Attempt to advance past end()");
       current = current->next;
@@ -74,7 +76,7 @@ class const_iterator {
       now references the previous position
       @throws std::invalid_argument If this const_iterator is at begin
   */
-    const_iterator& operator--(){
+    const_iterator& operator--() {
       if (current == parent->head)
           throw std::invalid_argument("Attempt to move before begin()");
       if (current == NULL) // Past last element.
@@ -86,7 +88,7 @@ class const_iterator {
   /** Postfix increment operator
       @return A copy of this const_iterator before being advanced.
   */
-    const_iterator operator++(int){
+    const_iterator operator++(int) {
       // Make a copy of the current value.
       iterator return_value = *this;
       // Advance self forward.
@@ -97,7 +99,7 @@ class const_iterator {
   /** Postfix decrement operator
       @return A copy of this const_iterator before being retarded
   */
-    const_iterator operator--(int){
+    const_iterator operator--(int) {
       // Make a copy of the current value.
       iterator return_value = *this;
       // Move self backward.
@@ -106,12 +108,12 @@ class const_iterator {
       return return_value; /* Return the value prior to decrement */
   }
   // Compare for equality
-    bool operator==(const const_iterator& other){
+    bool operator==(const const_iterator& other) {
       return current == other.current && parent == other.parent;
   }
 
   // Not equal
-    bool operator!=(const const_iterator& other){
+    bool operator!=(const const_iterator& other) {
       return !(*this == other);
   }
 }; // End const_iterator

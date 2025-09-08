@@ -1,3 +1,5 @@
+//copyright 2025
+
 #ifndef LIST_ITERATOR_H_
 #define LIST_ITERATOR_H_
 
@@ -104,7 +106,7 @@ class iterator {
 
   
   // Compare for equality.
-  bool operator==(const iterator& other){
+  bool operator==(const iterator& other) {
         return current == other.current && parent == other.parent;
     }
 
