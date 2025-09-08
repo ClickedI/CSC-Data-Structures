@@ -129,7 +129,6 @@ namespace KW {
         /** Insert an object at the end of the list.
             @param item - the item to be added 
          */
-        /*forms a Dnode a the point after the tail
         void push_back(const Item_Type& item)
         {
             if (tail != nullptr)
@@ -185,7 +184,7 @@ namespace KW {
             {
                 throw std::invalid_argument("list is empty");
             }
-            return head->item;
+            return head->data;
         }
 
         /** Get a constant reference to first element in the list.
@@ -199,7 +198,7 @@ namespace KW {
             {
                 throw std::invalid_argument("list is empty");
             }
-            return head->item;
+            return head->data;
         }
 
         /*<exercise chapter="1" section="7" type="programming" number="2">*/
@@ -215,7 +214,7 @@ namespace KW {
             {
                 throw std::invalid_argument("list is empty");
             }
-            return tail->item;
+            return tail->data;
         }
 
         /** Get a constant reference to the last element in the list.
@@ -229,7 +228,7 @@ namespace KW {
             {
                 throw std::invalid_argument("list is empty");
             }
-            return tail->item;
+            return tail->data;
         }
 
         /*</exercise>*/
