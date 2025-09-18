@@ -73,7 +73,7 @@ class iterator {
         if (current == parent->head)
             throw std::invalid_argument("Attempt to move before begin()");
         if (current == NULL) // Past last element.
-            current = parent->tail;
+            current = parent->head->prev;
         else
             current = current->prev;
         return *this;
