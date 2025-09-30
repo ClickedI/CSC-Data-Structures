@@ -3,30 +3,27 @@ project(InfixEval)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Replace this path with the actual location on your Mac
-set(CXXTEST_INCLUDE_DIR "/Users/erickropi/cxxtest-4.4")
-set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE "/Users/erickropi/cxxtest-4.4/bin/cxxtestgen")
+# Use Homebrew installation of CxxTest
+set(CXXTEST_INCLUDE_DIR "/opt/homebrew/Cellar/cxxtest/4.4_3/include")
+set(CXXTEST_PYTHON_TESTGEN_EXECUTABLE "/opt/homebrew/Cellar/cxxtest/4.4_3/bin/cxxtestgen")
 
 include_directories(${CXXTEST_INCLUDE_DIR})
 
-find_package(CxxTest REQUIRED)
+find_package(CxxTest)
 
 if(CXXTEST_FOUND)
     enable_testing()
 
     CXXTEST_ADD_TEST(unittest
-            runner.cpp  # THIS IS GENERATED
-            ${CMAKE_CURRENT_SOURCE_DIR}/newCxxTest.h  # YOUR TEST DESCRIPTION FILE
+            runner.cpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/newCxxTest.h
     )
 
-    # Link the implementation to the test
     target_sources(unittest PRIVATE
             Infix_Evaluator.cpp
     )
-
 endif()
 
-# Main executable (separate from tests)
 add_executable(InfixEval
         main.cpp
         Infix_Evaluator.cpp

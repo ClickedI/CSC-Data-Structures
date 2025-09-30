@@ -6,7 +6,7 @@
 class Infix_Evaluator {
 // Public member functions
 public:
-/** Evaluates a postfix expression.
+/** Evaluates a infix expression.
 @param expression The expression to be evaluated
 @return The value of the expression
 @throws Syntax_Error if a syntax error is detected
@@ -37,7 +37,7 @@ stack and applies the operator.
     }
 
     //complete operation
-    int eval_op(char op, int lhs, int rhs);
+    int eval_op(char op);
 
 // Data fields
     static const std::string OPERATORS;
