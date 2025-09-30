@@ -2,13 +2,14 @@
  * ProcessOrders.h
  *
  *  Created on: Mar 17, 2013
- *      Author: hloi
+ *      Author: hloi	œ
  */
 
 #ifndef PROCESSORDERS_H_
 #define PROCESSORDERS_H_
 
 #include <stack>
+#include <ostream>
 #include <queue>
 #include "Inventory.h"
 #include "Order.h"
