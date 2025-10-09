@@ -1,0 +1,17 @@
+# ninja log v6
+37	573	7808948595925636	CMakeFiles/InfixCalc.dir/Infix_To_Postfix.cpp.obj	49a6db9eeae3ba57
+14	549	7808947868284733	CMakeFiles/InfixCalc.dir/main.cpp.obj	3348a41289f95563
+16	563	7808948798468214	CMakeFiles/InfixCalc.dir/Infix_To_Postfix_Parens.cpp.obj	918155b7c5d12eb8
+36	575	7809038933549070	CMakeFiles/InfixEval.dir/main.cpp.obj	8f5735e28cd3d9f7
+19	491	7808948842480977	CMakeFiles/InfixCalc.dir/Postfix_Evaluator.cpp.obj	5569b04a6547d82
+41	649	7809038933596073	CMakeFiles/InfixEval.dir/Infix_Evaluator.cpp.obj	be5aa6303b11e2fe
+58	596	7809038933760194	CMakeFiles/InfixEval.dir/Postfix_Evaluator.cpp.obj	52f9eaae9de2490b
+21	204	7809039756264731	InfixEval.exe	edd92f967cad7652
+15	1432	7817489042455376	build.ninja	1e48d312aafa1133
+52	572	7809038933703096	CMakeFiles/InfixEval.dir/Infix_To_Postfix_Parens.cpp.obj	48b9c5310f4be0a1
+46	587	7809038933657103	CMakeFiles/InfixEval.dir/Infix_To_Postfix.cpp.obj	9a071b704d4b61d
+20	136	7809044452874964	runner.cpp	b3ec12cc514328f7
+20	136	7809044452874964	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH05EXAM Infix Calculator/cmake-build-debug/runner.cpp	b3ec12cc514328f7
+19	562	7809043668197109	CMakeFiles/unittest.dir/Infix_Evaluator.cpp.obj	9d3fcdae1aea0da6
+136	1303	7809044452979719	CMakeFiles/unittest.dir/runner.cpp.obj	237a32202f224fbf
+1303	1538	7809044464647739	unittest.exe	81026b27fd94277e

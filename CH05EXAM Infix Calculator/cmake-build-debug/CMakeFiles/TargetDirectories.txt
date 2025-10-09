@@ -1,0 +1,5 @@
+C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH05EXAM Infix Calculator/cmake-build-debug/CMakeFiles/unittest.dir
+C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH05EXAM Infix Calculator/cmake-build-debug/CMakeFiles/InfixEval.dir
+C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH05EXAM Infix Calculator/cmake-build-debug/CMakeFiles/test.dir
+C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH05EXAM Infix Calculator/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH05EXAM Infix Calculator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
