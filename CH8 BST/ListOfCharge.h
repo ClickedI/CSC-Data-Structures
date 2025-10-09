@@ -1,6 +1,4 @@
-//
-// Created by apees on 6/10/2024.
-//
+//Copyright 2025
 
 #ifndef HW_CSC211BINARYTREE_1_LISTOFCHARGE_H
 #define HW_CSC211BINARYTREE_1_LISTOFCHARGE_H

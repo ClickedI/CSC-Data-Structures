@@ -1,3 +1,5 @@
+//Copyright 2025
+
 #include "Contact.h"
 
 
@@ -33,7 +35,7 @@ void Contact::setName(std::string name) {
     this->name = name;
 }
 
-std::ostream& operator<<(std::ostream&out, const Contact& contact){
+std::ostream& operator<<(std::ostream&out, const Contact& contact) {
     out << "Name: " << contact.name << ", Address: " << contact.address << ", Email: " << contact.email;
     return out;
 }

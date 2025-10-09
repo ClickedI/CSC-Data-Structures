@@ -1,15 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Customer.h
- * Author: hloi
- *
- * Created on November 24, 2018, 2:13 PM
- */
+//Copyright 2025
 
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
@@ -38,7 +27,7 @@ public:
     void push_back(Charge c);
 
     friend std::ostream& operator<<(std::ostream& out,
-                           const Customer& customer){
+                           const Customer& customer) {
         out << "Card Number: " << customer.GetCard_number() << "\n"
             << customer.GetContact() << "\n"
             << "Limit: " << customer.GetLimit();

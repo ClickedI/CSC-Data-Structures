@@ -1,6 +1,4 @@
-//
-// Created by apees on 6/10/2024.
-//
+//Copyright 2025
 
 #include "ListOfCharge.h"
 

@@ -1,3 +1,5 @@
+//Copyright 2025
+
 #ifndef BTNODE_H_
 #define BTNODE_H_
 #include <sstream>

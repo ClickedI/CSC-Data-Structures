@@ -1,3 +1,4 @@
+//Copyright 2025
 
 #ifndef BINARY_SEARCH_TREE_H
 #define BINARY_SEARCH_TREE_H
@@ -114,12 +115,12 @@ template<typename Item_Type>
       new BTNode<Item_Type>(item);
     return true;
   } else {
-    if (item < local_root->data)
-      return insert(local_root->left, item);
-    else if (local_root->data < item)
-      return insert(local_root->right, item);
-    else {
-      return false;
+    if (item < local_root->data) {
+        return insert(local_root->left, item);
+    } else if (local_root->data < item) {
+        return insert(local_root->right, item);
+    } else {
+        return false;
     }
   }
 }
@@ -137,19 +138,20 @@ template<typename Item_Type>
   if (local_root == NULL) {
     return false;
   } else {
-    if (item < local_root->data)
-      return erase(local_root->left, item);
-    else if (local_root->data < item)
-      return erase(local_root->right, item);
-    else { // Found item
+    if (item < local_root->data) {
+        return erase(local_root->left, item);
+    } else if (local_root->data < item) {
+        return erase(local_root->right, item);
+    } else { // Found item
       BTNode<Item_Type>* old_root = local_root;
       if (local_root->left == NULL) {
         local_root = local_root->right;
       } else if (local_root->right == NULL) {
-        local_root = local_root->left;
+          local_root = local_root->left;
       } else {
-        replace_parent(old_root, old_root->left);
+          replace_parent(old_root, old_root->left);
       }
+
       delete old_root;      
       return true;
     }

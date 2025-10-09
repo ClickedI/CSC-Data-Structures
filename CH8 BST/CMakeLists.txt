@@ -8,8 +8,8 @@ set(PROJECT_SOURCES
         Contact.cpp
         Charge.cpp
         Customer.cpp
-        Customers.cpp
         ListOfCharge.cpp
+        Customers.h
 )
 
 # --- Main Executable ---

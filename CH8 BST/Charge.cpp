@@ -1,3 +1,5 @@
+//Copyright 2025
+
 #include "Charge.h"
 
 Charge::Charge() : business(""), amount(0.0) {}
