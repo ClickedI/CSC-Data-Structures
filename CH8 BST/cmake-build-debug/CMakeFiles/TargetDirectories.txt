@@ -1,0 +1,5 @@
+C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/CMakeFiles/HW8BST.dir
+C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/CMakeFiles/unittest.dir
+C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/CMakeFiles/test.dir
+C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,29 @@
+# ninja log v6
+5	153	7817495405622670	runner.cpp	da96171dc546e0e4
+5	153	7817495405622670	C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/runner.cpp	da96171dc546e0e4
+26	574	7817495404456762	CMakeFiles/HW8BST.dir/Customer.cpp.obj	94c4e622df6db804
+154	1381	7817495405739364	CMakeFiles/unittest.dir/runner.cpp.obj	a89a2e2391ec845a
+14	366	7817495404338801	CMakeFiles/HW8BST.dir/Charge.cpp.obj	243e4a810271f207
+19	488	7817495404392114	CMakeFiles/HW8BST.dir/Contact.cpp.obj	5b834a9be098ed00
+16	367	7817495528213026	CMakeFiles/HW8BST.dir/ListOfCharge.cpp.obj	8e19a5c8bc381f91
+17	532	7817496694598582	CMakeFiles/HW8BST.dir/Customers.cpp.obj	b5c3005ba73ab125
+4	918	7817500553948628	build.ninja	8ae315d3b860b047
+4	887	7817500553948628	build.ninja	8ae315d3b860b047
+25	128	7817500556092305	runner.cpp	ff4f1b727b39a44d
+25	128	7817500556092305	C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/runner.cpp	ff4f1b727b39a44d
+139	455	7817500556285292	CMakeFiles/unittest.dir/Charge.cpp.obj	13eb7fa037a6c0b6
+156	506	7817500556463902	CMakeFiles/unittest.dir/ListOfCharge.cpp.obj	2c4fa2f31bbfe179
+134	602	7817500556233512	CMakeFiles/unittest.dir/Contact.cpp.obj	6093d1f64533ae1d
+150	614	7817500556401492	CMakeFiles/unittest.dir/Customers.cpp.obj	2a2fd3182ba1cefd
+144	654	7817500556337396	CMakeFiles/unittest.dir/Customer.cpp.obj	59dbe64692eb31da
+128	1168	7817500556185348	CMakeFiles/unittest.dir/runner.cpp.obj	a89a2e2391ec845a
+41	555	7817502208781417	CMakeFiles/unittest.dir/Customers.cpp.obj	2a2fd3182ba1cefd
+32	606	7817502208695119	CMakeFiles/unittest.dir/Customer.cpp.obj	59dbe64692eb31da
+24	1289	7817502208604361	CMakeFiles/unittest.dir/runner.cpp.obj	a89a2e2391ec845a
+10	126	7817502740471451	runner.cpp	ff4f1b727b39a44d
+10	126	7817502740471451	C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/runner.cpp	ff4f1b727b39a44d
+133	205	7817502740638862	CMakeFiles/unittest.dir/Customers.cpp.obj	2a2fd3182ba1cefd
+18	129	7817503632307385	runner.cpp	ff4f1b727b39a44d
+18	129	7817503632307385	C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/runner.cpp	ff4f1b727b39a44d
+136	557	7817503632469655	CMakeFiles/unittest.dir/Customers.cpp.obj	2a2fd3182ba1cefd
+130	1138	7817503632411678	CMakeFiles/unittest.dir/runner.cpp.obj	a89a2e2391ec845a
