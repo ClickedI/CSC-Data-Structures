@@ -1,20 +1,17 @@
 cmake_minimum_required(VERSION 3.28)
-project(HW8BST)
+project(CH7 HW Rivers)
 
 set(CMAKE_CXX_STANDARD 11)
 
 # A list of all your project's source files
 set(PROJECT_SOURCES
-        Contact.cpp
-        Charge.cpp
-        Customer.cpp
-        ListOfCharge.cpp
-        Customers.h
+        Rivers.cpp
+        Rivers.h
         "../CH7 HW Rivers/Rivers.cpp"
 )
 
 # --- Main Executable ---
-add_executable(HW8BST main.cpp ${PROJECT_SOURCES})
+add_executable(CH7 HW Rivers main.cpp ${PROJECT_SOURCES})
 
 # --- CxxTest Configuration ---
 set(CXXTEST_INCLUDE_DIR c:/cxxtest-4.4)
