@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "HW8BST",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "HW8BST::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HW8BST-Debug-80a4545ddd70f4c58d2f.json",
+					"name" : "HW8BST",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "unittest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-unittest-Debug-1f31aaf12274d4e48577.json",
+					"name" : "unittest",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/eropi/Documents/Personal/CSC-Data-Structures/CH8 BST/cmake-build-debug",
+		"source" : "C:/Users/eropi/Documents/Personal/CSC-Data-Structures/CH8 BST"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

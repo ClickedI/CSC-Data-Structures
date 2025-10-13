@@ -1,0 +1,354 @@
+;; Homework 5
+;; CS 1101 A-Term 21
+
+;;Adapted in part from A16 Glynis Hamel
+
+
+;; Problem 1
+
+;; a River is a struct
+;;  (make-river string number number ListOfRiver)
+(define-struct river (name ph do tributaries))
+;; interp:
+;;     represents a river where
+;;         ph is the pH of the river water (0 - 14)
+;;         do is the dissolved oxygen (0 - 12 ppm)
+;;         tributaries is a list of rivers feeding into this river
+
+;; a ListOfRiver is one of
+;;   empty
+;;   (cons River ListOfRiver)
+
+
+;; Problem 2
+
+;; example
+(define MO (make-river "Missouri"  6.5  6.5
+                       (list (make-river "Jefferson"  7.0 6.2
+                                         (list (make-river "Beaverhead"  6.2 6.7 empty)
+                                               (make-river "Bighole"  7.0 7.5 empty)))
+                             (make-river "Sun"  7.5 7.0 empty)
+                             (make-river "Yellowstone"  7.0 7.5
+                                         (list (make-river "Gardner"  7.1 6.9 empty)
+                                               (make-river "Shields"  7.9 8.0 empty)
+                                               (make-river "Boulder"  8.5 5.5 empty)))
+                             (make-river "Madison"  8.0 8.0 empty)
+                             (make-river "Gallatin"  6.8 7.2 empty))))
+
+;; will use this define for testing the list-of-river functions
+(define LISTOFTRIB (list (make-river "Jefferson"  7.0 6.2
+                                     (list (make-river "Beaverhead"  6.2 6.7 empty)
+                                           (make-river "Bighole"  7.0 7.5 empty)))
+                         (make-river "Sun"  7.5 7.0 empty)
+                         (make-river "Yellowstone"  7.0 7.5
+                                     (list (make-river "Gardner"  7.1 6.9 empty)
+                                           (make-river "Shields"  7.9 8.0 empty)
+                                           (make-river "Boulder"  8.5 5.5 empty)))
+                         (make-river "Madison"  8.0 8.0 empty)
+                         (make-river "Gallatin"  6.8 7.2 empty)))
+
+;; Problem 3
+
+; ;; river-template:  River -> 
+; ;; 
+; (define (river-template a-riv)
+;   (...(river-name a-riv)
+;       (river-ph a-riv)
+;       (river-do a-riv)
+;       (trib-template (river-tributaries a-riv))))
+; 
+; ;; trib-template:  ListOfRiver -> 
+; ;; 
+; (define (trib-template alor)
+;   (cond [(empty? alor) (...)   ]
+;         [(cons? alor)
+;          (... (river-template (first alor))
+;               (trib-template (rest alor) ))]))
+
+head
+head->next
+
+;; Problem 4
+
+;; list-acidic-rivers:  River -> ListOfString
+;; consumes a river system and produces a list of the names of the rivers in the system that have a pH level
+;; lower than 6.5
+(define (list-acidic-rivers a-riv)
+  (if (< (river-ph a-riv) 6.5)
+      (cons (river-name a-riv)            
+            (list-acidic-tributaries (river-tributaries a-riv)))
+      (list-acidic-tributaries (river-tributaries a-riv)) ))
+
+;; list-acidic-tributaries:  ListOfRiver -> ListOfString
+;; consumes a list of rivers and produces a list of the names of the rivers with a ph less than 6.5
+(define (list-acidic-tributaries alor)
+  (cond [(empty? alor) empty   ]
+        [(cons? alor)
+         (append (list-acidic-rivers (first alor))
+                 (list-acidic-tributaries (rest alor) ))]))
+
+
+;; test
+;; checks a river system with an acidic river, and also with a river considered non-acidic (on the boundary at 6.5)
+;; the acidic river is listed, the river with pH=6.5 is not
+(check-expect (list-acidic-rivers MO) (list "Beaverhead"))
+
+;; checks a river system with no acidic rivers
+(check-expect (list-acidic-rivers (make-river "Yellowstone"  7.0 7.5
+                                              (list (make-river "Gardner"  7.1 6.9 empty)
+                                                    (make-river "Shields"  7.9 8.0 empty)
+                                                    (make-river "Boulder"  8.5 5.5 empty))))
+              empty)
+
+;; check the list-of-river function with an acidic river
+(check-expect (list-acidic-tributaries LISTOFTRIB) (list "Beaverhead"))
+
+;; check the list-of-river function with no acidic rivers
+(check-expect (list-acidic-tributaries (list (make-river "Jefferson"  7.0 6.2
+                                                         (list (make-river "Beaverhead"  7.2 6.7 empty)  ;; Beaverhead pH changed to 7.2
+                                                               (make-river "Bighole"  7.0 7.5 empty)))
+                                             (make-river "Sun"  7.5 7.0 empty)
+                                             (make-river "Yellowstone"  7.0 7.5
+                                                         (list (make-river "Gardner"  7.1 6.9 empty)
+                                                               (make-river "Shields"  7.9 8.0 empty)
+                                                               (make-river "Boulder"  8.5 5.5 empty)))
+                                             (make-river "Madison"  8.0 8.0 empty)
+                                             (make-river "Gallatin"  6.8 7.2 empty))) empty)
+
+;;
+;; Problem 5
+;;
+
+;;unhealthy?
+
+;; any-unhealthy?:  River -> Boolean
+;; consumes a river system and returns true if any river in the system has a pH less than 6.5 or greater than 8.5,
+;; or a DO level under 6ppm
+(define (unhealthy? a-riv)
+  (or  (bad-numbers? a-riv)
+       (unhealthy-trib? (river-tributaries a-riv))))
+
+;; unhealthy-trib?:  ListOfRiver -> Boolean
+;; consumes a list of rivers and produces true if any river in the system has a ph less than 6.5 or greater than 8.5,
+;; or a DO less than 6ppm
+(define (unhealthy-trib? alor)
+  (cond [(empty? alor)  false  ]
+        [(cons? alor)
+         (or  (unhealthy? (first alor))
+              (unhealthy-trib? (rest alor)))]))
+
+;; bad-numbers?:  River -> Boolean
+;; consumes a river and produces true if the river's ph is under 6.5 or over 8.5, or if the DO is less than 6ppm
+(define (bad-numbers? a-riv)
+  (or (< (river-ph a-riv) 6.5)
+      (> (river-ph a-riv) 8.5)
+      (< (river-do a-riv) 6.0)))
+
+;; test
+(check-expect (bad-numbers? (make-river "Styx"  4.0 6.0 empty)) true)  ;; ph less than 6.5
+(check-expect (bad-numbers? (make-river "Styx"  9.0 6.0 empty)) true)  ;; ph greater than 8.5            
+(check-expect (bad-numbers? (make-river "Styx"  6.5 6.0 empty)) false) ;; ph = 6.5
+(check-expect (bad-numbers? (make-river "Styx"  8.5 6.0 empty)) false) ;; ph = 8.5
+(check-expect (bad-numbers? (make-river "Styx"  6.5 5.0 empty)) true)  ;; DO less than 6.0
+(check-expect (bad-numbers? (make-river "Styx"  7.5 6.0 empty)) false) ;; DO = 6.0
+(check-expect (bad-numbers? (make-river "Styx"  7.0 6.5 empty)) false) ;; DO > 6.0
+
+
+(check-expect (unhealthy? MO) true)
+(check-expect (unhealthy? (make-river "Missouri"  6.5  6.5
+                                          (list (make-river "Jefferson"  7.0 6.2
+                                                            (list (make-river "Beaverhead"  6.8 6.7 empty)
+                                                                  (make-river "Bighole"  7.0 7.5 empty)))))) false)
+(check-expect (unhealthy-trib? empty) false)
+
+(check-expect (unhealthy-trib? (list (make-river "Jefferson"  7.0 6.2
+                                                 (list (make-river "Beaverhead"  6.2 6.7 empty)  ;; <-- unhealthy pH
+                                                       (make-river "Bighole"  7.0 7.5 empty)))
+                                     (make-river "Sun"  7.5 7.0 empty)
+                                     (make-river "Yellowstone"  7.0 7.5
+                                                 (list (make-river "Gardner"  7.1 6.9 empty)
+                                                       (make-river "Shields"  7.9 8.0 empty)
+                                                       (make-river "Boulder"  8.5 5.5 empty)))   ;; <-- unhealthy DO
+                                     (make-river "Madison"  8.0 8.0 empty)
+                                     (make-river "Gallatin"  6.8 7.2 empty))) true)
+
+(check-expect (unhealthy-trib? (list (make-river "Jefferson"  7.0 6.2
+                                                 (list (make-river "Beaverhead"  6.5 6.7 empty)
+                                                       (make-river "Bighole"  7.0 7.5 empty)))
+                                     (make-river "Sun"  7.5 7.0 empty)
+                                     (make-river "Yellowstone"  7.0 7.5
+                                                 (list (make-river "Gardner"  7.1 6.9 empty)
+                                                       (make-river "Shields"  7.9 8.0 empty)
+                                                       (make-river "Boulder"  8.5 7.5 empty)))
+                                     (make-river "Madison"  8.0 8.0 empty)
+                                     (make-river "Gallatin"  6.8 7.2 empty))) false)
+
+
+
+;;
+;; Problem 6
+;;
+
+;; lower-all-ph:  River -> River
+;; consumes a river system and produces a river system the same as the original, except all pH readings are 0.1 lower
+(define (lower-all-ph a-riv)
+  (make-river 
+   (river-name a-riv)
+   (- (river-ph a-riv) 0.1)
+   (river-do a-riv)
+   (update-ph (river-tributaries a-riv))))
+
+;; update-ph:  ListOfRiver -> ListOfRiver
+;; consumes a list of rivers and produces a list the same as the original except that every river in the list has its pH lowered by 0.1
+(define (update-ph alor)
+  (cond [(empty? alor)  empty  ]
+        [(cons? alor)
+         (cons (lower-all-ph (first alor))
+               (update-ph (rest alor)))]))
+
+;; test
+(check-expect (lower-all-ph MO)
+              (make-river "Missouri"  6.4  6.5
+                          (list (make-river "Jefferson"  6.9 6.2
+                                            (list (make-river "Beaverhead"  6.1 6.7 empty)
+                                                  (make-river "Bighole"  6.9 7.5 empty)))
+                                (make-river "Sun"  7.4 7.0 empty)
+                                (make-river "Yellowstone"  6.9 7.5
+                                            (list (make-river "Gardner"  7.0 6.9 empty)
+                                                  (make-river "Shields"  7.8 8.0 empty)
+                                                  (make-river "Boulder"  8.4 5.5 empty)))
+                                (make-river "Madison"  7.9 8.0 empty)
+                                (make-river "Gallatin"  6.7 7.2 empty))))
+
+(check-expect (update-ph empty) empty)
+(check-expect (update-ph LISTOFTRIB)
+              (list (make-river "Jefferson"  6.9 6.2
+                                (list (make-river "Beaverhead"  6.1 6.7 empty)
+                                      (make-river "Bighole"  6.9 7.5 empty)))
+                    (make-river "Sun"  7.4 7.0 empty)
+                    (make-river "Yellowstone"  6.9 7.5
+                                (list (make-river "Gardner"  7.0 6.9 empty)
+                                      (make-river "Shields"  7.8 8.0 empty)
+                                      (make-river "Boulder"  8.4 5.5 empty)))
+                    (make-river "Madison"  7.9 8.0 empty)
+                    (make-river "Gallatin"  6.7 7.2 empty)))
+
+
+
+;; Problem 7
+
+
+;; find-subsystem:  River String-> River OR #false
+;; consumes a river system and the name of the river.  The function returns that  part of the system that has the named
+;; river as its root (or returns false if there is no river in the system with the given name)
+(define (find-subsystem a-riv name)
+  (if (string=? (river-name a-riv) name)
+      a-riv      
+      (find-in-list (river-tributaries a-riv) name)))
+
+;; find-in-list:  ListOfRiver String -> River OR #false
+;; consumes a list of rivers and the name of a river.  The function returns the river system in the list
+;; that has the river with the given name as its root.  If no such named river exists, the function returns false.
+(define (find-in-list alor name)
+  (cond [(empty? alor) false   ]
+        [(cons? alor)
+         (if (river? (find-subsystem (first alor) name))
+             (find-subsystem (first alor) name)
+             (find-in-list (rest alor) name))]))
+
+(check-expect (find-subsystem MO "Yellowstone")
+              (make-river "Yellowstone"  7.0 7.5
+                          (list (make-river "Gardner"  7.1 6.9 empty)
+                                (make-river "Shields"  7.9 8.0 empty)
+                                (make-river "Boulder"  8.5 5.5 empty))))
+
+
+(check-expect (find-subsystem MO "Assabet") false)
+
+(check-expect (find-in-list empty "Yellowstone") false)
+(check-expect (find-in-list LISTOFTRIB "Yellowstone")
+              (make-river "Yellowstone"  7.0 7.5
+                          (list (make-river "Gardner"  7.1 6.9 empty)
+                                (make-river "Shields"  7.9 8.0 empty)
+                                (make-river "Boulder"  8.5 5.5 empty))))
+(check-expect (find-in-list LISTOFTRIB "Assabet") false)
+
+
+
+
+
+
+
+
+;; Problem 8
+
+;;Using map and/or filter (or other higher-order functions), define a new function dollar-menu-items with the following signature andpurpose:
+
+;; dollar-menu-items:  ListOfMenu-items -> ListOfString
+;; consumes a list of menu items and produces a list of the names of all the items with prices of $1 or less
+
+(define (dollar-menu-items lomi)
+  (filter under-$1 lomi))
+
+;;under-$1: Menu-item -> Boolean
+;;helper that consumes a menu item and returns true is price is under a buck
+
+(define (under-$1 a-menu-item)
+  (< (menu-item-price a-menu-item) 1))
+
+
+;; list that all satisfy
+(check-expect (dollar-menu-items fun) fun)
+;; list that contains an item that meets criteria
+(check-expect (dollar-menu-items (list soda shake pasta)) (list shake))
+;; list that doesn't contain any items that meet criteria
+(check-expect (dollar-menu-items lunch) empty)
+;; empty list
+(check-expect (dollar-menu-items empty) empty)
+
+
+;; Problem 9
+;Using map and/or filter (or other higher-order functions), define
+;the function all-same-kind? that has the following signature and purpose:
+
+;; all-same-kind?: ListOfMenu-item String -> Boolean
+;; consumes a ListOfMenu-items and a kind of food and produces true if every item is of that kind
+
+(define (all-same-kind? lomi some-kind)
+  (local
+    [(define (same-kind? a-menu-item)
+       (string=? some-kind (menu-item-kind a-menu-item)))]
+    (andmap same-kind? lomi)))
+
+(check-expect (all-same-kind? empty "dessert") #true)
+(check-expect (all-same-kind? lunch "dessert") #false)
+(check-expect (all-same-kind? (list pasta steak) "entree") #true)
+
+
+
+
+;;Using map and/or filter (or other higher-order functions), redefine the function list-expensive-vegetarian that you wrote for Homework 3, that has the following signature and purpose:
+
+;; list-expensive-vegetarian:  ListOfMenu-item Number -> ListOfMenu-item
+;; consumes a list of menu items and returns a list of those vegetarian items that exceed the given amount
+
+(define (list-expensive-vegetarian lomi number)
+  (local
+    [(define (exp-veg-item? a-menu-item)
+       (and (menu-item-vegetarian? a-menu-item)
+            (> (menu-item-price a-menu-item) number)))]
+    (filter exp-veg-item? lomi)))
+
+(check-expect (list-expensive-vegetarian empty 10) empty)
+(check-expect (list-expensive-vegetarian dinner-for-3 10) (list pasta))
+(check-expect (list-expensive-vegetarian dinner-for-3 5) (list falafel pasta cake))
+(check-expect (list-expensive-vegetarian dinner-for-3 20) empty)
+
+;; list-license-training:  ListOfVolunteerOrg Natural -> ListOfVolunteerOrg
+;; consumes a ListOfVolunteerOrg and produces only those items in the list that require a driver's license and
+;; less than the specified number of hours of training
+#;(define (list-license-training a-lovo hours)
+  (local [(define (license-low-training? avo) (and  (volunteer-org-license? avo) (< (volunteer-org-training avo) hours)))]
+    (filter license-low-training? a-lovo)))
+
+

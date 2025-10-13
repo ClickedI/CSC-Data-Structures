@@ -1,0 +1,640 @@
+;#lang racket
+
+;Class 15 Objectives
+;At the end of today's class you should
+;
+;KNOW: 
+;	•	That two function definitions are required for functions that operate on hierarchies. 
+;
+;BE ABLE TO: 
+;	•	Write functions that operate on hierarchies.  
+;Sample Exam Questions: 
+;Write a function update-year which consumes a name, a year, and a hierarchy for a descendant family tree, and updates the year for the named person in the hierarchy. 
+;Write a function (or functions) that satisfy the following signature/purpose, where Person represents the root of a hierarchical descendant tree, as we defined in class:
+
+
+
+
+;Mutually recursive functions
+
+;From yesterday:
+
+(define-struct person (name year eye children))
+;; a Person is a (make-person String Natural String ListOfPerson)
+;;  interp:  represents a person along with his/her descendants
+;;    name                               String
+;;    year                               Natural
+;;    eye                                String
+;;    children is the person's children  ListOfPerson
+
+;; a ListOfPerson is one of
+;;    empty
+;;    (cons Person ListOfPerson)
+
+; 
+;                                  Susan
+;                                 /  |   \
+;                                /   |    \
+;                            Joe   Helen  Ricky                                        
+;                                   /  \
+;                                  /    \
+;                                Beth    Sam
+; 
+
+
+(define SUSANTREE
+  (make-person "Susan" 1920 "blue"
+               (list (make-person "Joe" 1938 "green" empty)
+                     (make-person "Helen" 1940 "brown"
+                                  (list (make-person "Beth" 1965 "green" empty)
+                                        (make-person "Sam" 1969 "brown" empty)))
+                     (make-person "Ricky" 1942 "blue" empty))))
+
+(define MIKETREE  (make-person "Mike" 1990 "brown" empty))
+(define HELENTREE (make-person "Helen" 1940 "brown"
+                                  (list (make-person "Beth" 1965 "green" empty)
+                                        (make-person "Sam" 1969 "brown" empty))))
+
+
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+
+
+;;Kinds of functions we can write:
+
+;1.  *Count the entries:  + 1
+
+;;kount-people-in-tree: Person -> Integer
+;;consumes a family tree and produces number of people in the tree
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+
+;(check-expect (kount-people-in-tree MIKETREE) ?????)
+;(check-expect (kount-people-in-tree HELENTREE) ?????)
+;(check-expect (kount-people-in-tree SUSANTREE) ?????)
+
+
+
+
+;
+;2.  Sum (etc.) of some data:  +
+;
+;3.  *Is there a...?  Bool, true/false
+;    HW5, #5
+
+
+;; any-green-eyed?:  Person -> Boolean
+;; consumes a family tree and produces true if any have green eyes
+
+
+
+
+
+
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+;(check-expect (any-green-eyed? MIKETREE) ?????)
+;(check-expect (any-green-eyed? HELENTREE) ?????)
+;(check-expect (any-green-eyed? SUSANTREE) ?????)
+
+
+
+;
+;4.  *list-of-all/everything:  cons/append    often just one natural recursion
+;    here it's like #1, every item gets included/returned
+;
+
+;; gather-color-eyed:  Person String -> ListOfString
+;; consumes a family tree and a color and produces a list of the names of all
+;; people in the family tree with that color eyes
+
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+;(check-expect (gather-color-eyed MIKETREE "green") ?????)
+;(check-expect (gather-color-eyed MIKETREE "brown") ?????)
+;(check-expect (gather-color-eyed HELENTREE "green") ?????)
+;(check-expect (gather-color-eyed SUSANTREE "green") ?????)
+
+
+
+
+
+
+
+
+;5.  groomed-list / keep&chuck: cons/append  usuallly TWO natural recursions
+;    keep those with 'desired' feature, chuck the rest
+;    at the end of this week we'll kick this up a notch with the filter primitive
+;    HW5, #4
+;
+;6.  Update: return a new tree with some or all of the entries altered/updated
+;    HW5, #6
+;    (A little too much to do in class.  Follow the signatures & templates.)
+;    ((An update like this--or for a BST--will likley be on Friday's exam, so ...
+;    ...perhaps we'll do an example on Thursday.))
+;
+;7.  Not an exhaustive list!  siblings (above) is a terrific challenge
+;                             Hint:  Helpers are your friends! 
+;
+
+
+;1.   How many people in table?
+;2*.  Sum of ... years?  (Rename it $$$.)
+;3*.  Specific-eye-color?
+;4.   list-all-names
+;5*.  list-names-with-specific-eye-color
+;6.   Updates
+;7.   Other????
+
+;;Write a function that sums the 'years' of all entries in an arbitrary-arity tree
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+
+;Write a function that determines whether anyone in the tree has a specific eye color
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+
+;Write a function that returns a list of names of those in the tree with a specific eye color
+
+; ;; person-fcn:  Person ->
+; ;;
+; (define (person-fcn a-person)
+;   (...  (person-name a-person)
+;         (person-year a-person)
+;         (person-eye a-person)
+;         (lop-fcn (person-children a-person))))
+; 
+; 
+; ;; lop-fcn:  ListOfPerson ->
+; ;;
+; (define (lop-fcn alop)
+;   (cond [(empty? alop) (...)]
+;         [(cons? alop)  (...  (person-fcn (first alop))
+;                              (lop-fcn (rest alop)))]))
+; 
+
+
+;; FINISH THIS PROBLEM TONIGHT...
+
+;;; list-boomers:  Person -> ListOfString
+;;; consumes a person and produces a list of the names of everyone in that
+;;; person's tree who is born between 1946 and 1964 inclusive
+;(define (list-boomers a-person)
+;  (if (and (>= (person-year a-person) 1946)
+;           (<= (person-year a-person) 1964))
+;      .....))
+;
+;;; ...work from the templates!
+;
+;
+;
+;
+;;; boomers-in-list:  ListOfPerson -> ListOfString
+;;; consumes a list of persons and produces a list of the names of everyone in
+;;; those people's trees who are born between 1946 and 1964 inclusive
+;(define (boomers-in-list alop)
+;  (......)
+;
+;
+;;; ...work from the templates!
+;
+;
+;  
+;(check-expect (list-boomers SUSANTREE) empty)
+;(check-expect (list-boomers
+;               (make-person "Susan" 1920 "blue"
+;                            (list (make-person "Joe" 1938 "green" empty)
+;                                  (make-person "Helen" 1947 "brown"
+;                                               (list (make-person "Beth" 1965 "green" empty)
+;                                                     (make-person "Sam" 1962 "brown" empty)))
+;                                  (make-person "Ricky" 1942 "blue" empty))))
+;              (list "Helen" "Sam"))
+
+
+
+
+
+
+
+
+
+
+;;TERRA INCOGNITA:..............
+
+
+
+
+
+
+;More goodies & examples below
+;;-------------------------------------------------------------------------
+;;-------------------------------------------------------------------------
+;;-------------------------------------------------------------------------
+;;-------------------------------------------------------------------------
+;;-------------------------------------------------------------------------
+
+
+
+#;(define (sum-desc a-person)
+  (+ 1 (sum-desc-list (person-children a-person))))
+
+#;(define (sum-desc-list alop)
+  (cond [(empty? alop) 0]
+        [(cons?  alop) (+ (sum-desc (first alop))
+                          (sum-desc-list (rest alop)))]))
+                   
+#;(define (sum-name-lengths a-person)
+  (+ (string-length (person-name a-person))
+     (sum-name-lengths-list (person-children a-person))))
+
+
+#;(define (sum-name-lengths-list alop)
+  (cond [(empty? alop) 0]
+        [(cons?  alop) (+ (sum-name-lengths (first alop))
+                          (sum-name-lengths-list (rest alop)))]))
+
+
+#;(define (kount-parents a-person)
+  (if (empty? (person-children a-person))
+      0
+      (+ 1 (kount-parents-in-list (person-children a-person)))))
+
+#;(define (kount-parents-in-list alop)
+  (cond [(empty? alop) 0]
+        [(cons?  alop) (+ (kount-parents (first alop))
+                          (kount-parents-in-list (rest alop)))]))
+
+
+
+
+
+
+;;names: Person -> ListOfPerson
+;;consumes a person and list all descendants (including self)
+#;(define (descendants a-person)
+  (cons (person-name a-person) (list-of-descendants (person-children a-person))))
+
+;;list-of-descendants: ListOfPerson -> ListOfPerson
+;;consumes a list of people and produces a list of all descendants
+#;(define (list-of-descendants alop)
+  (cond [(empty? alop) empty]
+        [(cons?  alop) (append (descendants (first alop))
+                               (list-of-descendants (rest alop)))]))
+
+
+
+
+;Section 15.1 of the online textbook "How to Design Programs"
+#;
+.
+
+
+(define-struct parent (name date eyes children))
+
+;; Youngest Generation:
+(define Gustav (make-parent "Gustav" 1988 "brown" empty))
+
+(define Fred&Eva (list Gustav))
+
+;; Middle Generation:
+(define Adam (make-parent "Adam" 1950 "yellow" empty))
+(define Dave (make-parent "Dave" 1955 "black" empty))
+(define Eva (make-parent "Eva" 1965 "blue" Fred&Eva))
+(define Fred (make-parent "Fred" 1966 "pink" Fred&Eva))
+
+(define Carl&Bettina (list Adam Dave Eva))
+
+;; Oldest Generation:
+(define Carl (make-parent "Carl" 1926 "green" Carl&Bettina))
+(define Bettina (make-parent "Bettina" 1926 "green" Carl&Bettina))
+
+
+;; blue-eyed-descendant? : parent  ->  boolean
+;; to determine whether a-parent any of the descendants (children, 
+;; grandchildren, and so on) have 'blue in the eyes field
+(define (blue-eyed-descendant? a-parent)
+  (cond
+    [(string=? (parent-eyes a-parent) "blue") true]
+    [else (blue-eyed-children? (parent-children a-parent))]))
+
+;; blue-eyed-children? : list-of-children  ->  boolean
+;; to determine whether any of the structures in aloc is blue-eyed
+;; or has any blue-eyed descendant
+(define (blue-eyed-children? aloc)
+  (cond
+    [(empty? aloc) false]
+    [else
+      (cond
+        [(blue-eyed-descendant? (first aloc)) true]
+        [else (blue-eyed-children? (rest aloc))])]))
+
+
+#;(define (fn-for-Parent a-parent)
+  (... (parent-name   a-parent)
+       (parent-date   a-parent)
+       (parent-gender a-parent)
+       (parent-eyes   a-parent)
+       (fn-for-ListOfParent (parent-children a-parent))))
+
+#;(define (fn-for-ListOfParent a-ListOfParent)
+  (cond [(empty? a-ListOfParent) (...)]
+        [(cons?  a-ListOfParent) (... (fn-for-Parent (first a-ListOfParent))
+                                      (fn-for-ListOfParent (rest a-ListOfParent)))]))
+
+(define (kount-descendants a-parent)
+  (+ 1 
+       (kount-children (parent-children a-parent))))
+
+(define (kount-children lop)
+  (cond [(empty? lop) 0]
+        [(cons?  lop) (+  (kount-descendants (first lop))
+                          (kount-children (rest lop)))]))
+
+(define (list-descendants a-parent)
+  (cons (parent-name a-parent) 
+       (list-children (parent-children a-parent))))
+
+(define (list-children lop)
+  (cond [(empty? lop) empty]
+        [(cons?  lop) (append (list-descendants (first lop))
+                              (list-children (rest lop)))]))
+
+;.
+
+(define HARRY (make-parent "Harry" 2000 "blue" empty))
+(define HARRIETTE (make-parent "Harriette" 2000 "blue" empty))
+(define FLORA (make-parent "Flora" 1980 "hazel"
+                           (list HARRY HARRIETTE)));OOPS!  switcheroo!
+(define GEORGE (make-parent "George" 2001 "indigo" empty))
+(define GEORGINA (make-parent "Georgina" 2001 "indigo" empty)) 
+(define GEORGETTE (make-parent "Georgette" 2001 "indigo" empty))
+(define EDWARD (make-parent "Edward" 1981 "blue" (list GEORGE GEORGINA GEORGETTE)))
+(define EDWINA (make-parent "Edwina" 1979 "pink" empty))
+(define DARLENE (make-parent "Darlene" 1960 "blue" (list FLORA)))
+(define CINDY (make-parent "Cindy" 1959 "blue" (list EDWINA EDWARD)))
+(define BOB (make-parent "Bob" 1958 "yellow" (list DARLENE EDWINA EDWARD)))
+(define ALICE (make-parent "Alice" 1957 "indigo" (list DARLENE)))
+
+;(define-struct parent (name date eyes children))
+;; a Parent is a (make-parent String Natural String ListOfParents)
+;;name is parent's (person) name
+;;date is parent's YOB
+;;eyes is eye color
+;;children is a sub-hierarchy of parents
+
+;;count-descendants: Parent -> Natural
+;;consume a Parent and return number of descendants
+
+;(check-expect (count-descendants HARRY) 1)
+;(check-expect (count-descendants FLORA) 3)
+;(check-expect (count-descendants DARLENE) 4)
+;(check-expect (count-descendants BOB) 10)
+
+
+
+(define (count-descendants a-parent)
+  (+ 1 ;doing nothing with parent
+       (count-kids-in-list (parent-children a-parent))))
+
+;;count-kids-in-list: ListOfParents -> Natural
+;;consumes a Parent (whole tree) returns sum of descendants
+
+(define (count-kids-in-list a-ListOfParent)
+  (cond [(empty? a-ListOfParent) 0]
+        [(cons?  a-ListOfParent) (+ (count-descendants (first a-ListOfParent))
+                                    (count-kids-in-list (rest a-ListOfParent)))]))
+
+;;There might be some grumbling about include a person among his or her own
+;;descendants.  The '+ 1' in count-descendants is the computational driver--
+;;It is that operation that counts everyone who is counts.
+;;So removing it would cause a zero everywhere.  We surely want to count the
+;;all the sub-matriarchs/sub-patriarchs.  But it is reasonable to want to
+;;discount (literally!) the apex of the tree.  There is only one apex, so just
+;;uncount it:
+
+
+(define (proper-descendants a-parent)
+  (- (count-descendants a-parent) 1))
+
+;;I gave this the name 'proper-descendants' in a nod to mathematics.
+;;We say that a set A is a subset of B if every element in A is also in B.
+;;That means that B is a subset of itself.  When we want to excluded that
+;;possibility, we talk of 'proper' subsets, that is, subsets that are not
+;;the set itself.  Hence, 'proper' descendants is a natural name (to me).
+
+;;We could also have called it this:
+
+(define (Proper-descendants a-parent)
+  (sub1 (count-descendants a-parent)))
+
+;;In these, our mutually recursive functions seem to play the role of
+;;helpers to the outer-layer function that rides in and takes all the glory.
+;;That's OK.  It will ultimately happen all the time.
+;;Thinking like that is one of the next big steps.
+
+
+;;list-descendants: Parent -> ListOfStrings
+;;consume a Parent and return list of names of descendants
+
+
+;;We went rogue and decided to script kiddie the counter into a lister
+;;the name 'list-descendants' was defined above with the textbook example
+;;so we had to make a last-minute adjustment of name to 'kist-descendants'
+;;All we had to do was swap the operative equivalents of the numeric '+'
+;;operations for lists.  We used 'cons' in kist-descendants and 'append'
+;;in list-kids-in-list because cons takes a string and a list and append
+;;takes lists.
+(define (kist-descendants a-parent)
+  (cons (parent-name a-parent) ;doing nothing with parent
+       (list-kids-in-list (parent-children a-parent))))
+
+;;list-kids-in-list: ListOfParents -> ListOfStrings
+;;consumes a Parent (whole tree) returns sum of descendants
+
+(define (list-kids-in-list a-ListOfParent)
+  (cond [(empty? a-ListOfParent) empty]
+        [(cons?  a-ListOfParent) (append (kist-descendants (first a-ListOfParent))
+                                    (list-kids-in-list (rest a-ListOfParent)))]))
+
+;We discussed the order of the output list.  Turns out I defined Flora backwards.
+;I intended to build all the lists left to right but swapped that one (see above)
+;accidentally.
+
+;After class someone asked whether this output list (if corrected for the switch)
+;represents an in-order tranversal.
+
+;https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
+;What we did is actually a preorder traversal:  (root left right) Hint: (+ 2 3)
+;An inorder would be (left root right)  Hint: (2 + 3)
+;And postorder would be (left right root)  (2 3 +)  (The RPN of HP calculators) 
+;the abacabadabacaba from Tuesday is an Inorder Traversal
+
+;They all have their uses, but Racket is set up in 'prefix', so thinking in
+;preorder comes naturally.
+
+;SO!  What would you have to do to get an Inorder output?
+;What about postorder?
+;There are couple of obvious things to try.  One, at least.  Experiment.
+;Don't forget that you have the 'list' command at your service.
+
+
+;(kist-descendants BOB)
+;(list "Bob" "Darlene" "Flora" "Harry" "Harriette" "Edwina" "Edward" "George" "Georgina" "Georgette")
+
+
+;;WE ENDED HERE
+;;You can surely give this a try:
+
+;;indigo-eyes: Parent -> ListOfStrings
+;;consume a Parent and return list of all names of descendants with indigo eyes
+
+#;(define (fn-for-Parent a-parent)
+  (... (parent-name   a-parent)
+       (parent-date   a-parent)
+       (parent-gender a-parent)
+       (parent-eyes   a-parent)
+       (fn-for-ListOfParent (parent-children a-parent))))
+
+#;(define (fn-for-ListOfParent a-ListOfParent)
+  (cond [(empty? a-ListOfParent) (...)]
+        [(cons?  a-ListOfParent) (... (fn-for-Parent (first a-ListOfParent))
+                                      (fn-for-ListOfParent (rest a-ListOfParent)))]))
+
+
+
+
+
+
+#;(define (Even? n)
+  (cond [(= 0 n) true]
+        [(= 1 n) false]
+        [else (Odd? (- n 1))]))
+
+#;(define (Odd? n)
+  (cond [(= 0 n) false]
+        [(= 1 n) true]
+        [else (Even? (- n 1))]))
+
+
+
+
+;;A completed example that finds all the women in the n-ary (arbitrary-ary?) tree:
+
+
+;;indigo-list: Parent -> ListOfString
+;;consume Parent (whole tree!)
+;;return list of names all "indigo" nodes
+
+(define (indigo-list a-parent)
+  (if (string=? (parent-eyes a-parent) "indigo")
+                (cons (parent-name   a-parent)
+                      (find-all-indigo (parent-children a-parent)))
+                      (find-all-indigo (parent-children a-parent))))
+
+;;find-indigo: ListOfParent -> ListOfString
+;;consume Parent (whole tree!) return list of name of all female nodes
+(define (find-all-indigo a-ListOfParent)
+  (cond [(empty? a-ListOfParent) empty]
+        [(cons?  a-ListOfParent) (append (indigo-list (first a-ListOfParent))
+                                      (find-all-indigo (rest a-ListOfParent)))]))
+
+              
+ ;; siblings?: String String Person -> Boolean
+;; produces true if the two named people in the person's family tree
+;; have the same parent              
