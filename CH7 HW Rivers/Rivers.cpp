@@ -1,15 +1,28 @@
 //Copyright 2025
 
-#include "Rivers.h";
+#include "Rivers.h"
 #include <list>
 #include <string>
 #include <iostream>
 
-#include "../CH04HW Doubly Linked List/list_const_iterator.h"
+
 
 using std::string;
 using std::list;
 double Rivers::acid_level = 7.0;
+
+Rivers::Rivers() :
+    river_name(""),
+    pH(0.0),
+    DO(0.0)
+{}
+
+Rivers::~Rivers() {
+    for (Rivers* river : rivers) {
+        delete river;
+    }
+}
+
 
 Rivers::Rivers(string name, double ph, double DO, list<Rivers*> rivers)
     : river_name(name), pH(ph), DO(DO), rivers(rivers) {
@@ -55,6 +68,18 @@ void Rivers::setAcidLevel(double acidLevel) {
     acid_level = acidLevel;
 }
 
+int Rivers::count_rivers(const Rivers &rivers) {
+
+}
+
+int Rivers::count_list_rivers(list<Rivers *>::const_iterator begin,
+                                list<Rivers *>::const_iterator end) {
+
+}
+
+int Rivers::count_rivers(Rivers *rivers) {
+
+}
 
 
 
@@ -72,10 +97,16 @@ string Rivers::list_acidic_rivers() {
 
 string Rivers::list_acidic_tributaries(list<Rivers*>::const_iterator begin,
                                        list<Rivers*>::const_iterator end) {
-    string result;
-    for (auto it = begin; it != end; ++it) {
-        result += (*it)->list_acidic_rivers();
+
+    if (begin == end) {
+        return "";
     }
+
+    string result = (*begin)->list_acidic_rivers();
+    list<Rivers*>::const_iterator next = begin;
+    ++next;
+    result += list_acidic_tributaries(next, end);
+
     return result;
 }
 
@@ -92,12 +123,17 @@ bool Rivers::unhealthy(Rivers* river) {
 }
 bool Rivers::unhealthy_trib(list<Rivers*>::const_iterator begin,
                             list<Rivers*>::const_iterator end) {
-    for (auto it = begin; it != end; ++it) {
-        if ((*it)->unhealthy()) {
-            return true;
-        }
+    if (begin == end) {
+        return false;
     }
-    return false;
+
+    if ((*begin)->unhealthy()) {
+        return true;
+    }
+    list<Rivers*>::const_iterator next = begin;
+    ++next;
+    return unhealthy_trib(next, end);
+
 }
 
 bool Rivers::bad_numbers(Rivers* river) {
@@ -119,10 +155,14 @@ Rivers* Rivers::lower_all_ph(Rivers* river, Rivers* newRivers) {
 list<Rivers*> Rivers::update_ph(list<Rivers*>::const_iterator begin,
                                 list<Rivers*>::const_iterator end,
                                 list<Rivers*> newRivers) {
-    for (auto it = begin; it != end; ++it) {
-            newRivers.push_back((*it)->lower_all_ph());
-    }
+if (begin == end) {
     return newRivers;
+}
+
+    newRivers.push_back((*begin)->lower_all_ph());
+    list<Rivers*>::const_iterator next = begin;
+    ++next;
+    return update_ph(next, end, newRivers);
 }
 
 Rivers* Rivers::find_subsystem(string name) {
@@ -139,36 +179,50 @@ Rivers* Rivers::find_subsystem(Rivers* river, string name) {
 Rivers* Rivers::find_in_list(list<Rivers*>::const_iterator begin,
                              list<Rivers*>::const_iterator end,
                              string name) {
-    for (auto it = begin; it != end; ++it) {
-        Rivers* found = (*it)->find_subsystem(name);
-        if (found != nullptr) {
-            return found;
-        }
+    if (begin == end) {
+        return nullptr;
     }
-    return nullptr;
+
+   Rivers* found = (*begin)->find_subsystem(name);
+    if (found != nullptr) {
+        return found;
+    }
+    list<Rivers*>::const_iterator next = begin;
+    ++next;
+    return find_in_list(next, end, name);
 }
 
 void Rivers::print(Rivers* river, int level) {
-    for (int i = 0; i < level; i++) {
+    if (level > 0) {
         std::cout << "    ";
+        print(river, level - 1);
+    } else {
+        std::cout << river->river_name << " (pH: " << river->pH
+             << ", DO: " << river->DO << ")" << std::endl;
+        river->print(river->rivers.begin(), river->rivers.end(), level + 1);
     }
-    std::cout << river->river_name << " (pH: " << river->pH
-         << ", DO: " << river->DO << ")" << std::endl;
-    river->print(river->rivers.begin(), river->rivers.end(), level + 1);
 }
 
 void Rivers::print() {
     print(this, 0);
 }
 
+
 void Rivers::print(list<Rivers*>::const_iterator begin,
                   list<Rivers*>::const_iterator end,
                   int level) {
-    for (auto it = begin; it != end; ++it) {
-        if (*it != nullptr) {
-            print(*it, level);
-        }
+
+    if (begin == end) {
+        return;
     }
+
+    if (*begin != nullptr) {
+        print(*begin, level);
+    }
+
+    list<Rivers*>::const_iterator next = begin;
+    ++next;
+    print(next, end, level);
 }
 
 

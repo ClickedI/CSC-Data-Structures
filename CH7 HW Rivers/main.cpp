@@ -91,22 +91,22 @@ int main() {
     Rivers* r11 = new Rivers("Gallatin", 6.8, 7.2, rs11);
     r1->make_river(r11);
 
-//    cout << r2->list_acidic_rivers() << endl;
+    cout << r2->list_acidic_rivers() << endl;
     Rivers::setAcidLevel(6.5);
     cout << r1->list_acidic_rivers() << endl;
 
-//    cout << r5->unhealthy() << endl;
+   cout << r5->unhealthy() << endl;
 
-//    r1->print();
-//    Rivers* r12 = r1->lower_all_ph();
-//    r12->print();
+    r1->print();
+    Rivers* r12 = r1->lower_all_ph();
+    r12->print();
 
 
-//    Rivers* r13 = r1->find_subsystem("Yellowstone");
-//    r13->print();
+    Rivers* r13 = r1->find_subsystem("Yellowstone");
+    r13->print();
 
-//    Rivers* r13 = r1->find_subsystem("Assabet");
-//    r13->print();
-//    r1->print();
+    r13 = r1->find_subsystem("Assabet");
+    r13->print();
+    r1->print();
     return 0;
 }

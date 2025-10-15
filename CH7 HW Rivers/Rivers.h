@@ -1,6 +1,4 @@
-//
-// Created by hloi on 11/5/2021.
-//
+//copyright 2025
 
 #ifndef CSC211CH07RIVERSWPI_RIVERS_H
 #define CSC211CH07RIVERSWPI_RIVERS_H
@@ -14,7 +12,8 @@ using std::list;
 class Rivers {
 
 public:
-    Rivers() {}  // default constructor
+
+    Rivers();  // default constructor
 
     Rivers(string name, double ph, double DO, list<Rivers*> rivers);
 
@@ -39,11 +38,25 @@ public:
     void make_river(Rivers* river);
 
     /**
-     * checks a river system with an acidic river, and also with a river considered non-acidic
-     * (on the boundary at acid_level.  The default is 7.)
-     * the acidic river is listed, the river with pH=6.5 is not
-     * @return name of the rivers.
+     *count subrivers
+     *@param rivers
+     *return number of subrivers
      */
+
+    int count_rivers(const Rivers&rivers);
+
+    int count_list_rivers(list<Rivers*>::const_iterator begin,
+                            list<Rivers*>::const_iterator end);
+
+    int count_rivers(Rivers *rivers);
+
+    /**
+ * checks a river system with an acidic river, and also with a river considered non-acidic
+ * (on the boundary at acid_level.  The default is 7.)
+ * the acidic river is listed, the river with pH=6.5 is not
+ * @return name of the rivers.
+ */
+
     string list_acidic_rivers();
 
     /**
@@ -149,7 +162,7 @@ public:
     void print(Rivers* rivers, int level=0);
     void print(list<Rivers*>::const_iterator begin,
                list<Rivers*>::const_iterator end, int level);
-    void static setAcidLevel(double acidLevel);
+    static void setAcidLevel(double acidLevel);
 
 private:
     string river_name;
