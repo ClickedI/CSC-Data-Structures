@@ -148,6 +148,28 @@
             TS_ASSERT_EQUALS(found, r);
         }
 
+        void testPrint() {
+            std::list<Rivers*> rs1;
+            Rivers* r1 = new Rivers("Main", 7.0, 6.5, rs1);
+            std::list<Rivers*> rs2;
+            Rivers* r2 = new Rivers("Tributary", 7.5, 7.0, rs2);
+            r1->make_river(r2);
+            r1->print();
+        }
+
+        void testFindInListFound() {
+            std::list<Rivers*> rs1;
+            Rivers* r1 = new Rivers("Main", 7.0, 6.5, rs1);
+            std::list<Rivers*> rs2;
+            Rivers* r2 = new Rivers("Tributary", 7.5, 7.0, rs2);
+            r1->make_river(r2);
+            Rivers* found = r1->find_in_list(r1->getRivers().begin(),
+                                             r1->getRivers().end(),
+                                             "Tributary");
+            TS_ASSERT(found != nullptr);
+            TS_ASSERT_EQUALS(found->getRiverName(), "Tributary");
+        }
+
         void testFindSubsystemTributary() {
             std::list<Rivers*> rs1;
             Rivers* r1 = new Rivers("Main", 7.0, 6.5, rs1);
@@ -175,15 +197,6 @@
             TS_ASSERT_EQUALS(found, r2);
         }
 
-        void testPrint() {
-            std::list<Rivers*> rs;
-            Rivers* r1 = new Rivers("Test", 7.0, 6.5, rs);
-            Rivers* r2 = new Rivers("Test", 7.0, 6.5, rs);
-            Rivers* r3 = new Rivers("Test", 7.0, 6.5, rs);
-            Rivers::find_subsystem();
-
-            r1->print(rs, 1);
-        }
 
         void testPrintOverload() {
             std::list<Rivers*> rs1;

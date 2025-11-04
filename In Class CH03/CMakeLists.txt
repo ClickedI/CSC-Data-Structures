@@ -10,4 +10,5 @@ add_executable(program
     main.cpp
     computer.cpp
         Lap_Top.cpp
+        "../CH9HW Hash Map/newCxxTest.h"
 )

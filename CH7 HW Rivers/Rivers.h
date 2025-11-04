@@ -43,13 +43,6 @@ public:
      *return number of subrivers
      */
 
-    int count_rivers(const Rivers&rivers);
-
-    int count_list_rivers(list<Rivers*>::const_iterator begin,
-                            list<Rivers*>::const_iterator end);
-
-    int count_rivers(Rivers *rivers);
-
     /**
  * checks a river system with an acidic river, and also with a river considered non-acidic
  * (on the boundary at acid_level.  The default is 7.)

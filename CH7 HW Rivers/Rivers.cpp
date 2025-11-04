@@ -18,11 +18,13 @@ Rivers::Rivers() :
 {}
 
 Rivers::~Rivers() {
-    for (Rivers* river : rivers) {
-        delete river;
+    if (!rivers.empty()) {
+        Rivers* river = rivers.back();
+        rivers.pop_back();
+        delete river;  // This triggers the destructor recursively
+        this->~Rivers();  // Explicitly call destructor again
     }
 }
-
 
 Rivers::Rivers(string name, double ph, double DO, list<Rivers*> rivers)
     : river_name(name), pH(ph), DO(DO), rivers(rivers) {
@@ -67,20 +69,6 @@ void Rivers::make_river(Rivers *river) {
 void Rivers::setAcidLevel(double acidLevel) {
     acid_level = acidLevel;
 }
-
-int Rivers::count_rivers(const Rivers &rivers) {
-
-}
-
-int Rivers::count_list_rivers(list<Rivers *>::const_iterator begin,
-                                list<Rivers *>::const_iterator end) {
-
-}
-
-int Rivers::count_rivers(Rivers *rivers) {
-
-}
-
 
 
 string Rivers::list_acidic_rivers() {

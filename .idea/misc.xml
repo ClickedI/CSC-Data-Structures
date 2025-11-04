@@ -3,7 +3,7 @@
   <component name="CMakePythonSetting">
     <option name="pythonIntegrationState" value="YES" />
   </component>
-  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/CH7 HW Rivers">
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/CH9HW Hash Map">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
 </project>

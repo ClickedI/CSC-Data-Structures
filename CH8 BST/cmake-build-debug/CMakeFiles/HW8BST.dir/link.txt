@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\HW8BST.dir/objects.a
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc CMakeFiles\HW8BST.dir/objects.a @CMakeFiles\HW8BST.dir\objects1.rsp
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\HW8BST.dir/objects.a -Wl,--no-whole-archive -o HW8BST.exe -Wl,--out-implib,libHW8BST.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\HW8BST.dir\linkLibs.rsp

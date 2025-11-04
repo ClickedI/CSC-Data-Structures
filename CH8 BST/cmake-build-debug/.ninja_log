@@ -1,57 +1,24 @@
 # ninja log v6
-27	132	7817508839185626	runner.cpp	92915a4ba8598bd
+10	131	7817524403794281	runner.cpp	ee1b9e9881b900a
 26	574	7817495404456762	CMakeFiles/HW8BST.dir/Customer.cpp.obj	94c4e622df6db804
 18	129	7817503632307385	C:/Users/apees/Documents/Data Structures/CS211/CH8 BST/cmake-build-debug/runner.cpp	ff4f1b727b39a44d
-144	1268	7817508187515221	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
+132	1638	7817524403910127	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
 14	366	7817495404338801	CMakeFiles/HW8BST.dir/Charge.cpp.obj	243e4a810271f207
 19	488	7817495404392114	CMakeFiles/HW8BST.dir/Contact.cpp.obj	5b834a9be098ed00
 16	367	7817495528213026	CMakeFiles/HW8BST.dir/ListOfCharge.cpp.obj	8e19a5c8bc381f91
-168	683	7817508187758443	CMakeFiles/unittest.dir/Customers.cpp.obj	54a4128b5ac781c8
-11	927	7817508953295360	build.ninja	e13b72ed1a5e868
-155	496	7817508187626312	CMakeFiles/unittest.dir/Charge.cpp.obj	9655895ae8899d52
-175	565	7817508187831690	CMakeFiles/unittest.dir/ListOfCharge.cpp.obj	281e10a356d12289
-149	657	7817508187573818	CMakeFiles/unittest.dir/Contact.cpp.obj	edd0fe1457353471
-161	744	7817508187694411	CMakeFiles/unittest.dir/Customer.cpp.obj	61da0dbfd50794c5
-27	132	7817508839185626	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	92915a4ba8598bd
-19	127	7817508966234977	runner.cpp	ee1b9e9881b900a
-19	127	7817508966234977	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-10	125	7817509424539436	runner.cpp	ee1b9e9881b900a
-10	125	7817509424539436	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-10	148	7817509802404782	runner.cpp	ee1b9e9881b900a
-10	148	7817509802404782	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-11	131	7817510076558093	runner.cpp	ee1b9e9881b900a
-11	131	7817510076558093	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-131	1106	7817510076663068	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
-1107	1337	7817510086418585	unittest.exe	a1f9410c23854107
-21	137	7817510619430934	runner.cpp	ee1b9e9881b900a
-21	137	7817510619430934	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-138	1233	7817510619534883	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
-1233	1471	7817510630492097	unittest.exe	a1f9410c23854107
-21	133	7817515040280093	runner.cpp	ee1b9e9881b900a
-21	133	7817515040280093	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-144	527	7817515040483398	CMakeFiles/unittest.dir/ListOfCharge.cpp.obj	281e10a356d12289
-139	697	7817515040426324	CMakeFiles/unittest.dir/Customer.cpp.obj	61da0dbfd50794c5
-133	1300	7817515040373554	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
-1300	1569	7817515052040002	unittest.exe	a1f9410c23854107
-11	126	7817516816288054	runner.cpp	ee1b9e9881b900a
-11	126	7817516816288054	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
+11	927	7822933565881802	build.ninja	e13b72ed1a5e868
 137	492	7817516816496368	CMakeFiles/unittest.dir/Charge.cpp.obj	9655895ae8899d52
 149	571	7817516816619232	CMakeFiles/unittest.dir/ListOfCharge.cpp.obj	281e10a356d12289
 131	671	7817516816444343	CMakeFiles/unittest.dir/Contact.cpp.obj	edd0fe1457353471
-142	749	7817516816549417	CMakeFiles/unittest.dir/Customer.cpp.obj	61da0dbfd50794c5
-11	133	7817517017047898	runner.cpp	ee1b9e9881b900a
-11	133	7817517017047898	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-134	1160	7817517017173572	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
-1161	1403	7817517027447248	unittest.exe	a1f9410c23854107
-10	127	7817519549753419	runner.cpp	ee1b9e9881b900a
-10	127	7817519549753419	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-127	1550	7817519549862613	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
-1551	1868	7817519564094593	unittest.exe	a1f9410c23854107
-11	128	7817521937395358	runner.cpp	ee1b9e9881b900a
-11	128	7817521937395358	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-128	1460	7817521937494542	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
-1461	1767	7817521950814756	unittest.exe	a1f9410c23854107
-10	131	7817524403794281	runner.cpp	ee1b9e9881b900a
-10	131	7817524403794281	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
-132	1638	7817524403910127	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
 1639	1977	7817524418979725	unittest.exe	a1f9410c23854107
+142	749	7817516816549417	CMakeFiles/unittest.dir/Customer.cpp.obj	61da0dbfd50794c5
+10	131	7817524403794281	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	ee1b9e9881b900a
+39	198	7822945018525068	runner.cpp	8540548b38aaac68
+39	198	7822945018525068	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH8 BST/cmake-build-debug/runner.cpp	8540548b38aaac68
+214	813	7822945018826487	CMakeFiles/unittest.dir/Charge.cpp.obj	9655895ae8899d52
+230	902	7822945018992650	CMakeFiles/unittest.dir/ListOfCharge.cpp.obj	281e10a356d12289
+206	1047	7822945018752406	CMakeFiles/unittest.dir/Contact.cpp.obj	edd0fe1457353471
+222	1172	7822945018912489	CMakeFiles/unittest.dir/Customer.cpp.obj	61da0dbfd50794c5
+238	1212	7822945019074461	CMakeFiles/unittest.dir/C_/Users/apees/Documents/Data_Structures/CSC-Data-Structures/CH7_HW_Rivers/Rivers.cpp.obj	4f21c0344d0ee286
+199	2406	7822945018676885	CMakeFiles/unittest.dir/runner.cpp.obj	3b0a54f558b53554
+2406	2807	7822945040748342	unittest.exe	6fa3d8bed018fc04

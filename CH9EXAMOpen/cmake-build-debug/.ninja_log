@@ -1,0 +1,7 @@
+# ninja log v6
+22	144	7839157787544496	runner.cpp	eedca50bf552e2d7
+683	882	7839159423192702	CH9HW_HashMap.exe	103152b49c015eb4
+22	144	7839157787544496	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH9HW Hash Map/cmake-build-debug/runner.cpp	eedca50bf552e2d7
+2110	2623	7839157807322608	unittest.exe	b57902137bddf1ba
+151	689	7839157787729627	CMakeFiles/unittest.dir/Person.cpp.obj	9dda911b3aa76166
+145	2110	7839157787665753	CMakeFiles/unittest.dir/runner.cpp.obj	26420c4474df3255
