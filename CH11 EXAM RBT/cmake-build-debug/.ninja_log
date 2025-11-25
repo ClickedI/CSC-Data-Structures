@@ -1,0 +1,76 @@
+# ninja log v6
+21	148	7857334150968148	runner.cpp	37722622b7e654c
+21	148	7857334150968148	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 HW AVL/cmake-build-debug/runner.cpp	37722622b7e654c
+149	2292	7857334151057033	CMakeFiles/unittest.dir/runner.cpp.obj	1ad3dfecf8682fb3
+5	894	7857340810745527	build.ninja	c9689f1451d5cabb
+2293	2604	7857334172493681	unittest.exe	93ea08f76e5fa9db
+22	142	7857343007427212	runner.cpp	226b45cd592efabd
+22	142	7857343007427212	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+143	1295	7857343007519743	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1299	1505	7857343019088046	unittest.exe	93ea08f76e5fa9db
+19	126	7857343903246133	runner.cpp	226b45cd592efabd
+19	126	7857343903246133	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+126	1188	7857343903343615	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1188	1386	7857343913965491	unittest.exe	93ea08f76e5fa9db
+23	150	7857344817818892	runner.cpp	226b45cd592efabd
+23	150	7857344817818892	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+150	1352	7857344817896214	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1352	1633	7857344829918044	unittest.exe	93ea08f76e5fa9db
+12	123	7857345296113419	runner.cpp	226b45cd592efabd
+12	123	7857345296113419	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+124	1265	7857345296226747	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1265	1470	7857345307629940	unittest.exe	93ea08f76e5fa9db
+18	124	7857345964519138	runner.cpp	226b45cd592efabd
+18	124	7857345964519138	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+125	1263	7857345964610799	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1263	1461	7857345975988139	unittest.exe	93ea08f76e5fa9db
+18	120	7857346044465131	runner.cpp	226b45cd592efabd
+18	120	7857346044465131	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+120	1204	7857346044556487	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1205	1410	7857346055407636	unittest.exe	93ea08f76e5fa9db
+19	127	7857346318274109	runner.cpp	226b45cd592efabd
+19	127	7857346318274109	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+127	1151	7857346318361177	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1151	1348	7857346328593920	unittest.exe	93ea08f76e5fa9db
+18	128	7857347059741112	runner.cpp	226b45cd592efabd
+18	128	7857347059741112	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+128	1176	7857347059827218	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1176	1385	7857347070295053	unittest.exe	93ea08f76e5fa9db
+20	125	7857351643850118	runner.cpp	226b45cd592efabd
+20	125	7857351643850118	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+126	1129	7857351643938359	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1129	1343	7857351653969492	unittest.exe	93ea08f76e5fa9db
+19	135	7857353781478707	runner.cpp	226b45cd592efabd
+19	135	7857353781478707	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+136	1305	7857353781583870	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1305	1521	7857353793276912	unittest.exe	93ea08f76e5fa9db
+20	139	7857359154433701	runner.cpp	226b45cd592efabd
+20	139	7857359154433701	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+139	1293	7857359154527908	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1294	1521	7857359166074098	unittest.exe	93ea08f76e5fa9db
+22	138	7857360146691265	runner.cpp	226b45cd592efabd
+22	138	7857360146691265	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+138	1329	7857360146801818	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1329	1556	7857360158709556	unittest.exe	93ea08f76e5fa9db
+18	123	7857360326481377	runner.cpp	226b45cd592efabd
+18	123	7857360326481377	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+10	111	7857360376237857	runner.cpp	226b45cd592efabd
+10	111	7857360376237857	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+111	1173	7857360376336563	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1173	1388	7857360386955730	unittest.exe	93ea08f76e5fa9db
+18	122	7857361119683190	runner.cpp	226b45cd592efabd
+18	122	7857361119683190	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+122	1182	7857361119776935	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1182	1420	7857361130375561	unittest.exe	93ea08f76e5fa9db
+16	458	7857361364106882	CMakeFiles/CH11_EXAM_RBT.dir/main.cpp.obj	93f3bb97de27ea00
+459	616	7857361368533438	CH11_EXAM_RBT.exe	d7b7f8ee091dfd0f
+19	516	7857362073564654	CMakeFiles/CH11_EXAM_RBT.dir/main.cpp.obj	93f3bb97de27ea00
+517	680	7857362078543124	CH11_EXAM_RBT.exe	d7b7f8ee091dfd0f
+10	113	7857363908559127	runner.cpp	226b45cd592efabd
+10	113	7857363908559127	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+114	1297	7857363908665088	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1297	1534	7857363920500303	unittest.exe	93ea08f76e5fa9db
+20	137	7857364231482488	runner.cpp	226b45cd592efabd
+20	137	7857364231482488	C:/Users/apees/Documents/Data Structures/CSC-Data-Structures/CH11 EXAM RBT/cmake-build-debug/runner.cpp	226b45cd592efabd
+137	1319	7857364231574228	CMakeFiles/unittest.dir/runner.cpp.obj	3977514bb330417a
+1319	1542	7857364243394033	unittest.exe	93ea08f76e5fa9db
